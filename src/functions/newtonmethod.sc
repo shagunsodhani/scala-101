@@ -3,10 +3,6 @@ package functions
 //Newton's method to calculate square root of a given postive integer
 
 object newtonmethod {
-
-	def abs(y:Double):Double =
-			if (y < 0) -y
-			else y                    //> abs: (y: Double)Double
 		
 	def sqrt(x:Double):Double = {
 
@@ -19,7 +15,10 @@ object newtonmethod {
 		
 		def improve(guess:Double):Double =
 			(guess + x/guess)/2
-
+	
+		def abs(y:Double):Double =
+			if (y < 0) -y
+			else y
 	
 		sqrtIter(1)
 		
