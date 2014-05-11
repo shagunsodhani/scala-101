@@ -35,4 +35,15 @@ object PRODUCT {
 		
 	fact(5)                                   //> res4: Int = 120
 	fact(4)                                   //> res5: Int = 24
+	
+	def prod(f:Int=>Int) : (Int, Int) => Int =
+	{
+		def prodF(a:Int, b:Int) : Int =
+			if(a>b) 1
+			else f(a)*prodF(a+1,b)
+		prodF
+	}                                         //> prod: (f: Int => Int)(Int, Int) => Int
+	
+	prod(id)(1,7)                             //> res6: Int = 5040
+	
 }

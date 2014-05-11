@@ -49,4 +49,5 @@ object SUM {
 	}                                         //> sum_func: (f: Int => Int)(Int, Int) => Int
 	
 	sum_func((x:Int) => x*x*x)(1,4)           //> res8: Int = 100
+
 }

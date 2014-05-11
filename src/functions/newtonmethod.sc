@@ -6,6 +6,11 @@ object newtonmethod {
 		
 	def sqrt(x:Double):Double = {
 
+		def abs(x:Double) : Double =
+			if (x<0) -x
+			else x
+		
+		
 		def sqrtIter(guess:Double):Double =
 			if ( isGoodEnough(guess) ) guess
 			else sqrtIter( improve(guess) )
@@ -15,11 +20,7 @@ object newtonmethod {
 		
 		def improve(guess:Double):Double =
 			(guess + x/guess)/2
-	
-		def abs(y:Double):Double =
-			if (y < 0) -y
-			else y
-	
+		
 		sqrtIter(1)
 		
 	}                                         //> sqrt: (x: Double)Double
