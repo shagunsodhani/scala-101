@@ -40,4 +40,13 @@ object SUM {
 	sum_tail ((x:Int) => x*x ,1, 3)           //> res6: Int = 14
 	sum_tail ( (x:Int) => x*x*x, 1, 3)        //> res7: Int = 36
 
+	
+	def	sum_func(f:Int=>Int) : (Int, Int)=>Int = {
+		def	sum_f(a:Int, b:Int) : Int =
+			if(a>b) 0
+			else f(a)+sum_f(a+1,b)
+		sum_f
+	}                                         //> sum_func: (f: Int => Int)(Int, Int) => Int
+	
+	sum_func((x:Int) => x*x*x)(1,4)           //> res8: Int = 100
 }
