@@ -1,5 +1,7 @@
 package higher_order_functions
 
+import scala.annotation.tailrec
+
 //implementation of higher order functions buil around sum function
 
 object SUM {
@@ -19,5 +21,23 @@ object SUM {
 	sum ((x:Int) => x*x ,1, 3)                //> res2: Int = 14
 	sum ( (x:Int) => x*x*x, 1, 3)             //> res3: Int = 36
 	
-  
+	
+	def sum_tail(f:Int=>Int, a:Int, b:Int) : Int =
+	{
+	
+		@tailrec
+		def sum_rec(a: Int, acc: Int): Int =
+        if (a > b) acc
+        else sum_rec(a+1, f(a)+acc)
+	
+		sum_rec(a,0)
+	}                                         //> sum_tail: (f: Int => Int, a: Int, b: Int)Int
+	
+  sum_tail (id, 1 ,10)                            //> res4: Int = 55
+	sum_tail (sq, 1,3)                        //> res5: Int = 14
+
+	//Anonymous function
+	sum_tail ((x:Int) => x*x ,1, 3)           //> res6: Int = 14
+	sum_tail ( (x:Int) => x*x*x, 1, 3)        //> res7: Int = 36
+
 }
