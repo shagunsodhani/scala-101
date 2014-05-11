@@ -12,11 +12,12 @@ object SUM {
 	
 	def sq(x:Int):Int = x*x                   //> sq: (x: Int)Int
 	
-	
 	sum (id, 1 ,10)                           //> res0: Int = 55
-	
 	sum (sq, 1,3)                             //> res1: Int = 14
+
+	//Anonymous function
+	sum ((x:Int) => x*x ,1, 3)                //> res2: Int = 14
+	sum ( (x:Int) => x*x*x, 1, 3)             //> res3: Int = 36
 	
-	
-  println("Welcome to the Scala worksheet")       //> Welcome to the Scala worksheet
+  
 }
