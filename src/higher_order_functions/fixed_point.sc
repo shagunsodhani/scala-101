@@ -21,4 +21,7 @@ object fixed_point {
 	
 	fixedpoint(x => x/2+1)(1)                 //> res0: Double = 1.9998779296875
 	
+	def sqrt(x:Double) = fixedpoint(y => (y+x/y)/2 )(1)
+                                                  //> sqrt: (x: Double)Double
+  sqrt(2)                                         //> res1: Double = 1.4142135623746899
 }
