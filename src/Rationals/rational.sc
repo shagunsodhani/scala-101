@@ -55,14 +55,14 @@ class Rational(x:Int, y:Int){
 		new Rational(num*s.num, den*s.den)
 	}
 	
-	def neg : Rational =
+	def unary_- : Rational =
 		new Rational(-num,den)
 		
 	def inv : Rational =
 		new Rational(den,num)
 		
 	def - (s:Rational) : Rational = {
-		this + s.neg
+		this + -s
 	}
 	
 	def / (s:Rational) : Rational = {
