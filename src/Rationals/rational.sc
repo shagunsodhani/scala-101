@@ -15,7 +15,7 @@ class Rational(x:Int, y:Int){
 	def num = x/g
 	def den = y/g
 	 		
-		
+	/*
 	def add(s:Rational) : Rational = {
 		new Rational(num*s.den + den*s.num, den*s.den)
 	}
@@ -38,15 +38,47 @@ class Rational(x:Int, y:Int){
 		mul(s.inv)
 	}
 	
-	override def toString =
-  	num + "/" + den
-	
 	def less(s:Rational) : Boolean =
 		num*s.den < den*s.num
 	
 	def max(s:Rational) : Rational =
 		if ( this.less(s) ) s
 		else this
+		
+	*/
+	
+	def + (s:Rational) : Rational = {
+		new Rational(num*s.den + den*s.num, den*s.den)
+	}
+	
+	def * (s:Rational) : Rational = {
+		new Rational(num*s.num, den*s.den)
+	}
+	
+	def neg : Rational =
+		new Rational(-num,den)
+		
+	def inv : Rational =
+		new Rational(den,num)
+		
+	def - (s:Rational) : Rational = {
+		this + s.neg
+	}
+	
+	def / (s:Rational) : Rational = {
+		this * s.inv
+	}
+	
+	def < (s:Rational) : Boolean =
+		num*s.den < den*s.num
+	
+	def max(s:Rational) : Rational =
+		if ( this < s ) s
+		else this
+		
+	override def toString =
+  	num + "/" + den
+	
 }
 
 object rational {
@@ -79,13 +111,18 @@ object rational {
   	
   makeString(addrational(a,b))                    //> res2: String = 5/2
   
-  a.add(b)                                        //> res3: Rationals.Rational = 5/2
-  makeString(addrational(negrational(a),b))       //> res4: String = 3/2
+  a + b                                           //> res3: Rationals.Rational = 5/2
+  a - b                                           //> res4: Rationals.Rational = 3/-2
+  a*b                                             //> res5: Rationals.Rational = 1/1
+  a/b                                             //> res6: Rationals.Rational = 1/4
+  a max b                                         //> res7: Rationals.Rational = 2/1
+  a < b                                           //> res8: Boolean = true
+  makeString(addrational(negrational(a),b))       //> res9: String = 3/2
   
-  makeString(mulrational(invrational(a),b))       //> res5: String = 4/1
+  makeString(mulrational(invrational(a),b))       //> res10: String = 4/1
  	
- 	a.max(b)                                  //> res6: Rationals.Rational = 2/1
+ 	a.max(b)                                  //> res11: Rationals.Rational = 2/1
   
-  a.max(new Rational(4))                          //> res7: Rationals.Rational = 4/1
+  a.max(new Rational(4))                          //> res12: Rationals.Rational = 4/1
   println("Welcome to the Scala worksheet")       //> Welcome to the Scala worksheet
 }
