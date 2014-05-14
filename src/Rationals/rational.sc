@@ -3,6 +3,32 @@ package Rationals
 class Rational(x:Int, y:Int){
 	def num = x
 	def den = y
+	
+	def add(s:Rational) : Rational = {
+		new Rational(num*s.den + den*s.num, den*s.den)
+	}
+	
+	def mul(s:Rational) : Rational = {
+		new Rational(num*s.num, den*s.den)
+	}
+	
+	def neg : Rational =
+		new Rational(-num,den)
+		
+	def inv : Rational =
+		new Rational(den,num)
+		
+	def sub(s:Rational) : Rational = {
+		add(s.neg)
+	}
+	
+	def div(s:Rational) : Rational = {
+		mul(s.inv)
+	}
+	
+	override def toString =
+  	num + "/" + den
+	
 }
 
 object rational {
@@ -27,7 +53,7 @@ object rational {
   
   def invrational(r:Rational) : Rational = {
   	new Rational(r.den, r.num)
-  }                                               //> invrational: (r: Rationals.Rational)Rationals.Rational
+ 	}                                         //> invrational: (r: Rationals.Rational)Rationals.Rational
   
   
   def makeString(r:Rational) =
