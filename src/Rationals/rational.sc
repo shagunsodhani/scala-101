@@ -3,18 +3,18 @@ package Rationals
 class Rational(x:Int, y:Int){
 
 	require(y!=0, "Denominator must be non negative")
-	
+
 	def this(x:Int) = this(x,1)
-	   
+
 	private def gcd (a:Int, b:Int) : Int=
 		if(b==0) a
 		else gcd(b, a%b)
-	
+
 	private val g = gcd(x, y)
-	
+
 	def num = x/g
 	def den = y/g
-	 		
+
 	/*
 	def add(s:Rational) : Rational = {
 		new Rational(num*s.den + den*s.num, den*s.den)
@@ -46,49 +46,49 @@ class Rational(x:Int, y:Int){
 		else this
 		
 	*/
-	
+
 	def + (s:Rational) : Rational = {
 		new Rational(num*s.den + den*s.num, den*s.den)
 	}
-	
+
 	def * (s:Rational) : Rational = {
 		new Rational(num*s.num, den*s.den)
 	}
-	
+
 	def unary_- : Rational =
 		new Rational(-num,den)
-		
+
 	def inv : Rational =
 		new Rational(den,num)
-		
+
 	def - (s:Rational) : Rational = {
 		this + -s
 	}
-	
+
 	def / (s:Rational) : Rational = {
 		this * s.inv
 	}
-	
+
 	def < (s:Rational) : Boolean =
 		num*s.den < den*s.num
-	
+
 	def max(s:Rational) : Rational =
 		if ( this < s ) s
 		else this
-		
+
 	override def toString =
   	num + "/" + den
-	
+
 }
 
 object rational {
-	
+
 	def a = new Rational(1, 2)                //> a: => Rationals.Rational
 	a.num + a.den                             //> res0: Int = 3
 	a.den                                     //> res1: Int = 2
-	
+
 	def b = new Rational(2,1)                 //> b: => Rationals.Rational
-	
+
 	def addrational(r:Rational, s:Rational) : Rational = {
 		new Rational( r.num*s.den + r.den*s.num, r.den*s.den)
 	}                                         //> addrational: (r: Rationals.Rational, s: Rationals.Rational)Rationals.Ration
