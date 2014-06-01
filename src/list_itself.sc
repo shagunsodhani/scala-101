@@ -45,32 +45,52 @@ def reverse[T](xs : List[T]) : List[T] = xs match {
 	case y :: ys => reverse(ys) ++ List(y)
 }                                                 //> reverse: [T](xs: List[T])List[T]
 
+def msort (xs : List[Int] ): List[Int] = {
+	val n = xs.length/2
+	if (n==0) xs
+	else {
+		def merge(xs : List[Int], ys : List[Int] ): List[Int] = xs match {
+			case List() => ys
+			case x :: xs1 => ys match {
+				case List() => xs
+				case y :: ys1 =>
+					if (x < y) x :: merge(xs1, ys)
+					else y :: merge (xs, ys1)
+			}
+		}
+		val (fst, snd) = xs splitAt n
+		merge(msort(fst), msort(snd))
+	}
+}                                                 //> msort: (xs: List[Int])List[Int]
+
+msort(nums)                                       //> res2: List[Int] = List(1, 2, 3, 4, 5)
+
 def removeAt[T](xs: List[T], n: Int) : List[T] = (xs take n) ::: (xs drop n+1)
                                                   //> removeAt: [T](xs: List[T], n: Int)List[T]
-removeAt(sortnum, 1)                              //> res2: List[Int] = List(1, 3, 4, 5)
-sortnum                                           //> res3: List[Int] = List(1, 2, 3, 4, 5)
-reverse (sortnum)                                 //> res4: List[Int] = List(5, 4, 3, 2, 1)
+removeAt(sortnum, 1)                              //> res3: List[Int] = List(1, 3, 4, 5)
+sortnum                                           //> res4: List[Int] = List(1, 2, 3, 4, 5)
+reverse (sortnum)                                 //> res5: List[Int] = List(5, 4, 3, 2, 1)
 
-concat(sortnum, nums)                             //> res5: List[Int] = List(1, 2, 3, 4, 5, 5, 4, 3, 2, 1)
-init(sortnum)                                     //> res6: List[Int] = List(1, 2, 3, 4)
+concat(sortnum, nums)                             //> res6: List[Int] = List(1, 2, 3, 4, 5, 5, 4, 3, 2, 1)
+init(sortnum)                                     //> res7: List[Int] = List(1, 2, 3, 4)
 
-last(sortnum)                                     //> res7: Int = 5
-sortnum                                           //> res8: List[Int] = List(1, 2, 3, 4, 5)
-sortnum updated (2,2)                             //> res9: List[Int] = List(1, 2, 2, 4, 5)
+last(sortnum)                                     //> res8: Int = 5
+sortnum                                           //> res9: List[Int] = List(1, 2, 3, 4, 5)
+sortnum updated (2,2)                             //> res10: List[Int] = List(1, 2, 2, 4, 5)
 
-sortnum.contains(5)                               //> res10: Boolean = true
-sortnum contains 25                               //> res11: Boolean = false
-sortnum indexOf 25                                //> res12: Int = -1
+sortnum.contains(5)                               //> res11: Boolean = true
+sortnum contains 25                               //> res12: Boolean = false
+sortnum indexOf 25                                //> res13: Int = -1
 
-isort(sortnum++nums.reverse)                      //> res13: List[Int] = List(1, 1, 2, 2, 3, 3, 4, 4, 5, 5)
-nums.length                                       //> res14: Int = 5
-nums.last                                         //> res15: Int = 1
-nums.init                                         //> res16: List[Int] = List(5, 4, 3, 2)
-nums(2)                                           //> res17: Int = 3
-nums apply 2                                      //> res18: Int = 3
+isort(sortnum++nums.reverse)                      //> res14: List[Int] = List(1, 1, 2, 2, 3, 3, 4, 4, 5, 5)
+nums.length                                       //> res15: Int = 5
+nums.last                                         //> res16: Int = 1
+nums.init                                         //> res17: List[Int] = List(5, 4, 3, 2)
+nums(2)                                           //> res18: Int = 3
+nums apply 2                                      //> res19: Int = 3
 
-nums take 2                                       //> res19: List[Int] = List(5, 4)
-nums.init drop 2                                  //> res20: List[Int] = List(3, 2)
+nums take 2                                       //> res20: List[Int] = List(5, 4)
+nums.init drop 2                                  //> res21: List[Int] = List(3, 2)
 
 val nums1 = Nil.::(4).::(3).::(2).::(1)           //> nums1  : List[Int] = List(1, 2, 3, 4)
 
