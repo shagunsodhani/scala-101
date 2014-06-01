@@ -91,7 +91,7 @@ def removeAt[T](xs: List[T], n: Int) : List[T] = (xs take n) ::: (xs drop n+1)
                                                   //> removeAt: [T](xs: List[T], n: Int)List[T]
 
 
-def msortord[T] (xs : List[T] )(ord: Ordering[T]) : List[T] = {
+def msortord[T] (xs : List[T] )(implicit ord: Ordering[T]) : List[T] = {
 	val n = xs.length/2
 	if (n==0) xs
 	else {
@@ -114,9 +114,9 @@ def msortord[T] (xs : List[T] )(ord: Ordering[T]) : List[T] = {
 		val (fst, snd) = xs splitAt n
 		merge(msortord(fst)(ord), msortord(snd)(ord))
 	}
-}                                                 //> msortord: [T](xs: List[T])(ord: scala.math.Ordering[T])List[T]
+}                                                 //> msortord: [T](xs: List[T])(implicit ord: scala.math.Ordering[T])List[T]
 
-msortord(fruit)(Ordering.String)                  //> res6: List[String] = List(apples, banana, oranges, pears)
+msortord(fruit)//(Ordering.String)                //> res6: List[String] = List(apples, banana, oranges, pears)
 
 removeAt(sortnum, 1)                              //> res7: List[Int] = List(1, 3, 4, 5)
 sortnum                                           //> res8: List[Int] = List(1, 2, 3, 4, 5)
