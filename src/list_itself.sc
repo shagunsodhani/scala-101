@@ -80,7 +80,14 @@ def msort[T] (xs : List[T] )(lt : (T, T) => Boolean) : List[T] = {
 }                                                 //> msort: [T](xs: List[T])(lt: (T, T) => Boolean)List[T]
 
 
-msort(nums)((x: Int, y : Int) => x < y)           //> res4: List[Int] = List(1, 2, 3, 4, 5)
+def scaleList(xs: List[Double], factor : Double) = 
+	xs map (x => x*factor)
+
+scaleList(nums, 2)
+	
+nums 	
+                                                  //> res4: List[Int] = List(1, 2, 3, 4, 5)
+msort(nums)((x: Int, y : Int) => x < y)
 
 msort(fruit)((x: String, y: String) => x.compareTo(y) < 0)
                                                   //> res5: List[String] = List(apples, banana, oranges, pears)
