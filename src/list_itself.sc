@@ -92,7 +92,21 @@ def squareList(xs: List[Int]): List[Int] = xs match {
 
 def squareList2(xs: List[Int]): List[Int] =
 	xs map (x => x*x)
-	
+
+def posElem(xs : List[Int]) : List[Int] = xs match {
+	case Nil => Nil
+	case y :: ys => if (y>0) y :: posElem(ys) else posElem (ys)
+}	
+
+def posElems2(xs: List[Int]): List[Int] =
+	xs filter (x => x > 0)
+
+nums filter (x => x > 2)
+nums filterNot (x => x > 2)
+nums partition (x=> x > 2)
+nums dropWhile (x=> x > 2)
+nums span (x=> x > 2)
+
 nums 	
                                                   //> res4: List[Int] = List(1, 2, 3, 4, 5)
 msort(nums)((x: Int, y : Int) => x < y)
