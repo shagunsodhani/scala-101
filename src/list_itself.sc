@@ -5,11 +5,9 @@ val pair = ("shagun", 14.04)                      //> pair  : (String, Double) =
 val (name, year) = pair                           //> name  : String = shagun
                                                   //| year  : Double = 14.04
 pair._1                                           //> res0: String = shagun
-val bigpair = ("shagun", "sodhani", "trusty", 14.04)
-                                                  //> bigpair  : (String, String, String, Double) = (shagun,sodhani,trusty,14.04)
-val biggerpair = (pair._1, pair._2, pair, "trusty", 14.04)
-                                                  //> biggerpair  : (String, Double, (String, Double), String, Double) = (shagun,1
-                                                  //| 4.04,(shagun,14.04),trusty,14.04)
+
+val bigpair = ("shagun", "sodhani", "trusty", 14.04) //> bigpair  : (String, String, String, Double) = (shagun,sodhani,trusty,14.04)
+val biggerpair = (pair._1, pair._2, pair, "trusty", 14.04) //| 4.04,(shagun,14.04),trusty,14.04)
 biggerpair._1                                     //> res1: String = shagun
 
 
@@ -156,5 +154,5 @@ val dim: List[List[Int]] =
       List(0, 1, 0),
       List(0, 0, 1)
    )                                              //> dim  : List[List[Int]] = List(List(1, 0, 0), List(0, 1, 0), List(0, 0, 1))
-  println("Welcome to the Scala worksheet")       //> Welcome to the Scala worksheet
+  
 }
