@@ -80,10 +80,18 @@ def msort[T] (xs : List[T] )(lt : (T, T) => Boolean) : List[T] = {
 }                                                 //> msort: [T](xs: List[T])(lt: (T, T) => Boolean)List[T]
 
 
-def scaleList(xs: List[Double], factor : Double) = 
+def scaleList(xs: List[Int], factor : Int) : List[Int] = 
 	xs map (x => x*factor)
 
 scaleList(nums, 2)
+
+def squareList(xs: List[Int]): List[Int] = xs match {
+	case Nil => Nil
+	case y :: ys => y*y :: squareList(ys)
+}
+
+def squareList2(xs: List[Int]): List[Int] =
+	xs map (x => x*x)
 	
 nums 	
                                                   //> res4: List[Int] = List(1, 2, 3, 4, 5)
